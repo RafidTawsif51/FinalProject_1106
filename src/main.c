@@ -1,15 +1,3 @@
-/*
- * Smart Classroom Comfort Monitor
- * CSE 1106 Final Project - Option 1
- * Built on top of the legacy temp_monitor.c from lab.
- *
- * Build on the Pi:    gcc -o main src/main.c -lpigpio -lrt -lpthread
- * Run the program:    sudo ./main
- * Run the tests:      sudo ./main test
- * Build on a laptop:  gcc -DNO_PI -o main src/main.c   (LED is simulated)
- *
- * Run from the repo folder so data/ and status.txt are found.
- */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
