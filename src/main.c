@@ -16,17 +16,17 @@
 #define TEMP_LOW_LIMIT  -50.0                   /* reject impossible readings */
 #define TEMP_HIGH_LIMIT 150.0
 
-/* Acceptable range. Was hard-coded 68/76 in the legacy code; now changeable (FR8). */
+/* Acceptable range. Was hard-coded 68/76 in the lab-5 code; now changeable (FR8). */
 double minTemp = DEFAULT_MIN;
 double maxTemp = DEFAULT_MAX;
 
 double readings[MAX_READINGS];
 int readingCount = 0;
 
-/* ================= Legacy functions (from lab) ================= */
+/* ================= Lab 5 functions ================= */
 
 double calculateAverage(double readings[], int count) {        /* FR5 */
-    if (count == 0) return 0;                   /* fix: avoid divide by zero */
+    if (count == 0) return 0;                  
     double total = 0;
     for (int i = 0; i < count; i++) total += readings[i];
     return total / count;
@@ -38,7 +38,6 @@ void displayReadings(double readings[], int count) {
 }
 
 int isOutOfRange(double temperature) {                          /* FR2 */
-    /* fix: uses the adjustable range instead of hard-coded 68 and 76 */
     if (temperature > maxTemp || temperature < minTemp)
         return 1;
     else
@@ -107,7 +106,7 @@ void writeStatus(const char *status) {                          /* FR7 */
 
 /* ================= Input ================= */
 
-/* Returns 1 if valid number, 0 if invalid, -1 if input ended (Ctrl+D). */
+
 int readNumber(const char *prompt, double *out) {
     char line[64];
     char *end;
@@ -181,7 +180,7 @@ void changeRange(void) {                                        /* FR8 */
     printf("Acceptable range is now %.1f-%.1f F.\n", minTemp, maxTemp);
 }
 
-/* ================= Test suite (from lab, extended) ================= */
+/* ================= Test suite (from lab 5 and extended) ================= */
 
 int testsRun = 0;
 int testsPassed = 0;
